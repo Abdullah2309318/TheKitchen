@@ -5,7 +5,8 @@ export function useApi() {
   const { getAccessTokenSilently, isAuthenticated } = useAuth0();
 
   const instance = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
+    // The baseURL now correctly falls back to localhost for local development
+    baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3000',
     withCredentials: false,
   });
 
