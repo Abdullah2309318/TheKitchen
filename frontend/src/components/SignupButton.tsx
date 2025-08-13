@@ -5,7 +5,16 @@ export default function SignupButton() {
   return (
     <button
       onClick={() => loginWithRedirect({ authorizationParams: { screen_hint: "signup" } })}
-      style={{ padding: 8 }}
+      style={{ 
+        padding: '0.5rem 1rem',
+        border: '1px solid #d1d5db',
+        borderRadius: '0.375rem',
+        background: 'white',
+        color: '#374151',
+        fontSize: '0.875rem',
+        cursor: 'pointer',
+        transition: 'all 0.2s ease'
+      }}
     >
       Sign up
     </button>

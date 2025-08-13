@@ -5,7 +5,16 @@ export default function LogoutButton() {
   return (
     <button
       onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
-      style={{ padding: 8 }}
+      style={{ 
+        padding: '0.5rem 1rem',
+        border: '1px solid #fecaca',
+        borderRadius: '0.375rem',
+        background: 'white',
+        color: '#dc2626',
+        fontSize: '0.875rem',
+        cursor: 'pointer',
+        transition: 'all 0.2s ease'
+      }}
     >
       Log out
     </button>

@@ -13,11 +13,14 @@ export class ScopesGuard implements CanActivate {
     if (!required || required.length === 0) return true;
 
     const req = context.switchToHttp().getRequest();
-    const tokenScopes: string[] = (req.user?.scope || req.user?.scopes || "")
-      .toString()
-      .split(" ")
-      .filter(Boolean);
+    const user = req.user || {};
 
-    return required.every((s) => tokenScopes.includes(s));
+    // Auth0 may send "scope": "read:teams write:teams" OR "permissions": ["read:teams", "manage:teams"]
+    const scopeStr = typeof user.scope === "string" ? user.scope : "";
+    const scopes = scopeStr.split(" ").filter(Boolean);
+    const permissions = Array.isArray(user.permissions) ? user.permissions : [];
+
+    const grants = new Set<string>([...scopes, ...permissions]);
+    return required.every((need) => grants.has(need));
   }
 }
