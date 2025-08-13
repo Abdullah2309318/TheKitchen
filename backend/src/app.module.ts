@@ -1,10 +1,17 @@
-import { Module } from "@nestjs/common";
-import { ConfigModule } from "@nestjs/config";
-import { AuthModule } from "./auth/auth.module";
-// import { RecipesModule } from "./recipes/recipes.module"; // REMOVE
-import { TeamsModule } from "./teams/teams.module";
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { AppController } from './app.controller'; 
+import { AppService } from './app.service'; 
+import { AuthModule } from './auth/auth.module';
+import { TeamsModule } from './teams/teams.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), AuthModule, TeamsModule], // <-- only these
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    AuthModule,
+    TeamsModule,
+  ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
