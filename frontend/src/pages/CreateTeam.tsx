@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from "react-router-dom";
 import { useApi } from "../api/http";
 import { usePermissions } from "../lib/usePermissions";
 
@@ -44,7 +45,21 @@ export default function CreateTeam() {
 
   return (
     <div style={{ padding: 24, maxWidth: 600, margin: "0 auto" }}>
-      <h2>Create Team</h2>
+      <div style={{ textAlign: "center", marginBottom: 30 }}>
+        <Link to="/" style={{ 
+          padding: "10px 20px", 
+          backgroundColor: "#007bff", 
+          color: "white", 
+          textDecoration: "none", 
+          borderRadius: "6px",
+          fontSize: "14px",
+          display: "inline-block",
+          marginBottom: "20px"
+        }}>
+          ← Back to Home
+        </Link>
+        <h2 style={{ margin: 0 }}>Create Team</h2>
+      </div>
       {!isAuthenticated && <p>Please log in.</p>}
       {!canManageTeams && isAuthenticated && <p style={{ opacity: 0.7 }}>You don't have <code>manage:teams</code>.</p>}
 

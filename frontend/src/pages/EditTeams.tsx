@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useApi } from "../api/http";
 import { usePermissions } from "../lib/usePermissions";
 
@@ -51,7 +52,21 @@ export default function EditTeams() {
 
   return (
     <div style={{ padding: 24, maxWidth: 800, margin: "0 auto" }}>
-      <h2>Edit Teams</h2>
+      <div style={{ textAlign: "center", marginBottom: 30 }}>
+        <Link to="/" style={{ 
+          padding: "10px 20px", 
+          backgroundColor: "#007bff", 
+          color: "white", 
+          textDecoration: "none", 
+          borderRadius: "6px",
+          fontSize: "14px",
+          display: "inline-block",
+          marginBottom: "20px"
+        }}>
+          ← Back to Home
+        </Link>
+        <h2 style={{ margin: 0 }}>Edit Teams</h2>
+      </div>
       {msg && <div style={{ color: "green" }}>{msg}</div>}
       {err && <div style={{ color: "crimson" }}>{err}</div>}
       <ul>

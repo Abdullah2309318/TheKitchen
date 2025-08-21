@@ -1,1 +1,5 @@
 # TheKitchen
+
+# .gitignore
+
+backend/.env
