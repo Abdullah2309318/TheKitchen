@@ -8,6 +8,7 @@ import { SupabaseModule } from './database/supabase.module';
 import { UsersModule } from './users/users.module';
 import { IngestModule } from './ingest/ingest.module';
 import { TeamsModule } from './teams/teams.module';
+import { DriversModule } from './core/drivers/drivers.module';
 
 
 @Module({
@@ -22,6 +23,7 @@ import { TeamsModule } from './teams/teams.module';
     UsersModule,
     IngestModule,
     TeamsModule, // Temporary module for frontend compatibility
+    DriversModule, // New F1 drivers module
   ],
   controllers: [AppController],
   providers: [AppService],

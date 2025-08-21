@@ -8,7 +8,7 @@ import styles from "./Home.module.css";
 const tiles = [
   { title: "Create Team", path: "/one" },
   { title: "Edit Team(s)", path: "/two" },
-  { title: "View Team(s)", path: "/three" },
+  { title: "View Drivers", path: "/drivers" },
 ];
 
 export default function Home() {

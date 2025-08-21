@@ -44,8 +44,16 @@ export class IngestService {
     // 2. TRANSFORM
     const dbRows = this.transformApiDataToDbSchema(apiDrivers);
     
-    // 3. LOAD
-    await this.loadDriversIntoDB(dbRows);
+    // --- START: ADDED DE-DUPLICATION LOGIC ---
+    this.logger.log(`De-duplicating ${dbRows.length} rows before loading...`);
+    const uniqueDrivers = Array.from(
+      dbRows.reduce((map, driver) => map.set(driver.driver_number, driver), new Map()).values()
+    );
+    this.logger.log(`Found ${uniqueDrivers.length} unique drivers.`);
+    // --- END: ADDED DE-DUPLICATION LOGIC ---
+    
+    // 3. LOAD (changed to use the de-duplicated array)
+    await this.loadDriversIntoDB(uniqueDrivers);
     
     this.logger.log('Driver ingestion process finished.');
   }
